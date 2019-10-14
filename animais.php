@@ -10,7 +10,8 @@
   // Realiza a pesquisa somente quando receber os dados que deve pesquisar
   if($_POST["animal"]){
     $pesquisa = $_POST["animal"];
-    $sql = "SELECT * FROM "
+    $sql = "SELECT * FROM animais WHERE nome = %".$pesquisa."%";
+    $resultado = $banco->select($sql);
   }
 
   //$row = $banco->select($sql);
@@ -24,11 +25,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/cover.css">
   <link rel="stylesheet" href="css/starter-template.css">
+  <link rel="stylesheet" href="css/flip.css">
+
 </head>
 
 <body>
 
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" style="width: 100%; max-width:1080px;">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" style="width: 100%; max-width:1440px;">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">Para Surdo Ouvir</h3>
@@ -38,6 +41,7 @@
           <a class="nav-link" href="#">Comidas</a>
           <a class="nav-link" href="#">Gestos</a>
           <a class="nav-link" href="palavra.php">Dicionário</a>
+          <a class="nav-link" href="soletrado.php">Nomes/Soletrado</a>
           <form class="form-inline ml-3" method="post">
               <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
@@ -48,11 +52,55 @@
     </header>
 
     <main role="main" class="container">
+      <div class="album py-5">
+        <div class="container">
+          <div class="row">
+            <!-- Este div inteiro -->
+            <?php
+              if(is_array($resultado)){
+                while($count < count($resultado)){
+                  echo '
+                  <div class="col-md-4">
+
+                    <div class="card mb-4 shadow-sm ">
+                      <img class="card-img-top" src="'.$resultado[$count][2].'" alt="Card image">
+                      <div class="card-img-overlay">
+                        <h4 class="card-title">'.$resultado[$count][1].'</h4>
+                        <p class="card-text">Some example text.</p>
+                        <a href="#" class="btn btn-primary">See Profile</a>
+                      </div>
+                    </div>
+
+                  </div>
+                  ';
+                }
+              }
+            ?>
+
+            <div class="col-md-4 flip-container">
+              <div class="card mb-4 shadow-sm flipper">
+                  <div class="front">
+                    <img class="card-img-top" src="animais/img/abelha.jpg" alt="Abelha IMG">
+                    <div class="card-img-overlay">
+                      <h4 class="card-title">John Doe</h4>
+                      <p class="card-text">Some example text.</p>
+                      <a href="#" class="btn btn-primary">See Profile</a>
+                    </div>
+                  </div>
+                  <div class="back">
+                    <img class="card-img-top" src="animais/img/abelha.jpg" alt="Abelha GIF">
+                  </div>
+              </div>
+            </div>
+            <!-- Será exibido apartir do while em PHP -->
+          </div>
+        </div>
+      </div>
 
       <?php // Fazer enviar via POST qual o nome da palavra que será exibida na página palavra.php
 //
-  //    if(is_array($row)) {
-    //    while ($count < count($row)) {
+  //    if(is_array($resultado)) {
+    //    while ($count < count($resultado)) {
 //
   //      }
     //  }
