@@ -32,8 +32,8 @@
         }
     </script>
 </head>
-<body>        
-     
+<body>
+
     <form method="post">
     <b><h4 class="center">Tipo Animal</h4></b>
     <a href="cad_tipoAnimal.php">Cadastrar</a>
@@ -41,16 +41,16 @@
                         <input type="radio" value="codigo" name="campo" class="with-gap" <?php if ($campo == "codigo"): echo "checked";?><?php endif ?>>
                         <span>Codigo</span>
                     </label>
-                
+
                     <label>
                         <input type="radio" value="tipo" name="campo" class="with-gap" <?php if ($campo == "tipo"): echo "checked";?><?php endif ?>>
                         <span>tipo</span>
                     </label>
-                
+
                      <input type="text" name="pesquisa" value="<?php echo $pesquisa ?>">
-            
+
                      <button class="btn waves-effect black" name="acao" value="ok">Enviar</button>
-               
+
                 <table border="1">
                     <?php
                         if ($pesquisa == '') {
@@ -97,7 +97,7 @@
                         <input type="radio" value="codigo" name="campo3" class="with-gap" <?php if ($campo3 == "codigo"): echo "checked";?><?php endif ?>>
                         <span>Codigo</span>
                     </label>
-                
+
                     <label>
                         <input type="radio" value="nome" name="campo3" class="with-gap" <?php if ($campo3 == "nome"): echo "checked";?><?php endif ?>>
                         <span>nome</span>
@@ -117,11 +117,11 @@
                         <input type="radio" value="tipoCodigo" name="campo3" class="with-gap" <?php if ($campo3 == "tipoCodigo"): echo "checked";?><?php endif ?>>
                         <span>tipoCodigo</span>
                     </label>
-                
+
                      <input type="text" name="pesquisa3" value="<?php echo $pesquisa3 ?>">
-            
+
                      <button class="btn waves-effect black" name="acao" value="ok">Enviar</button>
-               
+
                 <table border="1">
                     <?php
                         if ($pesquisa3 == '' or $campo3 == "") {
@@ -144,7 +144,7 @@
                         elseif ($campo3 =='tipoCodigo'){
                             $sql = "SELECT * FROM ".$tb_animais." WHERE tipoCodigo LIKE '".$pesquisa3."%' order by ".$campo3;
                         }
-                        
+
                             ?>
 
                         <tr>
