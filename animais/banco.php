@@ -1,12 +1,14 @@
 <?php
 
+
 class banco {
 
     private $pdo, $tabela;
 
     public function conexao() {
         try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=engenharia', "root", "");
+            require_once "bd/conf.php";
+            $this->pdo = new PDO('mysql:host='.$host.';dbname='.$database, $usuario, $senha);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo->exec("SET CHARACTER SET utf8");
         } catch (PDOException $e) {
@@ -49,9 +51,9 @@ class banco {
             return false;
         }
     }
-    
+
     public function geraStmt($sql, $vetor, $campos){
-        $stmt = $this->pdo->prepare($sql);       
+        $stmt = $this->pdo->prepare($sql);
             for ($j = 1; $j <= count($vetor)-1; $j++) {
                 if (is_numeric($vetor[$j])) {
                     $stmt->bindParam (':' . $campos[$j], $vetor[$j], PDO::PARAM_STR);
@@ -70,7 +72,7 @@ class banco {
             $consulta = $this->pdo->query($sql);
             $vetor = null;
             while ($linha = $consulta->fetch(PDO::FETCH_BOTH)) {
-                $vetor[] = $linha; 
+                $vetor[] = $linha;
             }
             return $vetor;
         } catch (PDOException $e) {
@@ -105,7 +107,7 @@ class banco {
             $sql .= ")";
             #echo $sql;
             $stmt = $this->geraStmt($sql, $vetor, $campos);
-            
+
             $stmt->execute();
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
