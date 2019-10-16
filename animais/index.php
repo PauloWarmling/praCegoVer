@@ -148,11 +148,11 @@
                             ?>
 
                         <tr>
-                            <th>Codigo</th>
-                            <th>nome</th>
-                            <th>linkImg</th>
-                            <th>linkVid</th>
-                            <th>tipoCodigo</th>
+                            <th>Codigo</th> <!-- 0 -->
+                            <th>nome</th> <!-- 1 -->
+                            <th>linkImg</th> <!-- 2 -->
+                            <th>linkVid</th> <!-- 3 -->
+                            <th>tipoCodigo</th> <!-- 4 -->
                             <th>Excluir</th>
                             <th>Atualizar</th>
                         </tr>
