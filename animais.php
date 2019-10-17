@@ -32,7 +32,7 @@
 
 <body>
 
-  <div class="cover-container p-3 mx-auto" style="width: 100%; max-width:1440px;">
+  <div class="cover-container p-3 mx-auto" style="width: 100%; max-width:1440px; margin-tom: 5em;">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">Para Surdo Ouvir</h3>
