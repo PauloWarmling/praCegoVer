@@ -1,15 +1,11 @@
 .flip-container {
   background-color: transparent;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px;
-
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  width:200px;
 }
 
-.flip-container:hover .flipper{
-  transform: rotateY(180deg);
-}
-
-.flip-container .flipper {
+/* This container is needed to position the front and back side */
+.flipper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -18,31 +14,20 @@
   transform-style: preserve-3d;
 }
 
-.flip-container .front,
-.flip-container .back {
-  width: 400px;
-  height: 400px;
-  overflow: hidden;
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
 }
 
-.flip-container .flipper {
-  transition: 1.4s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-.flip-container .flipper .front,
-.flip-container .flipper .back {
+/* Position the front and back side */
+.front, .back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
 }
 
-.flip-container .flipper .front {
-  transform: rotateY(0deg);
-}
-
-.flip-container .flipper .back {
+/* Style the back side */
+.back {
   transform: rotateY(180deg);
 }
