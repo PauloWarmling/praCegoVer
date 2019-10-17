@@ -3,6 +3,7 @@
 
 <?php
 
+  // Fazer um select genérico
   require_once "bd/banco.php"; // Usado para SELECT, INSERT, ETC...
   require_once "bd/tabelas.php";
 
@@ -14,7 +15,7 @@
   // Realiza a pesquisa somente quando receber os dados que deve pesquisar
   if(isset($_POST["pesquisa"])){
     $pesquisa = $_POST["pesquisa"];
-    $sql = "SELECT * FROM ".$tb_animal." WHERE nome LIKE '%".$pesquisa."%'";
+    $sql = "SELECT * FROM ".$tb_gestos." WHERE nome LIKE '%".$pesquisa."%'";
     $resultado = $banco->select($sql);
   }
 
@@ -38,9 +39,9 @@
         <h3 class="masthead-brand">Para Surdo Ouvir</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link active" href="animais.php">Animais</a>
+          <a class="nav-link" href="animais.php">Animais</a>
           <a class="nav-link" href="comidas.php">Comidas</a>
-          <a class="nav-link" href="gestos.php">Gestos</a>
+          <a class="nav-link active" href="gestos.php">Gestos</a>
           <a class="nav-link" href="dicionario.php">Dicionário</a>
           <a class="nav-link" href="soletrado.php">Soletrado</a>
           <form class="form-inline ml-3" method="post">
