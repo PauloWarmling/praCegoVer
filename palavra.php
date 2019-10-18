@@ -18,7 +18,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Para Surdo Ouvir</title>
+  <title>Título do Progama</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/cover.css">
   <link rel="stylesheet" href="css/starter-template.css">
@@ -29,7 +29,7 @@
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" style="width: 100%; max-width:1080px;">
     <header class="masthead mb-auto">
       <div class="inner">
-        <h3 class="masthead-brand">Para Surdo Ouvir</h3>
+        <h3 class="masthead-brand">Título do Progama</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="animais.php">Animais</a>
