@@ -1,5 +1,5 @@
-create database engenharia;
-use engenharia;
+create database u330641331_geek ;
+use u330641331_geek ;
 
 create table tipoAnimal(
 codigo int auto_increment primary key,
@@ -26,7 +26,7 @@ nome varchar(45),
 linkImg varchar(45),
 linkVid varchar(45),
 tipoCodigo int,
-foreign key (tipoCodigo) references tipoComida(codigo)
+foreign key (tipoCodigo) references tipoComidas(codigo)
 );
 
 create table tipoGestos(
@@ -40,5 +40,5 @@ nome varchar(45),
 linkImg varchar(45),
 linkVid varchar(45),
 tipoCodigo int,
-foreign key (tipoCodigo) references tipoComida(codigo)
+foreign key (tipoCodigo) references tipoGestos(codigo)
 );
