@@ -15,7 +15,7 @@
   // Realiza a pesquisa somente quando receber os dados que deve pesquisar
   if(isset($_POST["pesquisa"])){
     $pesquisa = $_POST["pesquisa"];
-    $sql = "SELECT * FROM ".$tb_comidas." WHERE nome LIKE '%".$pesquisa."%'";
+    $sql = "SELECT * FROM ".$tb_comidas." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC";
     $resultado = $banco->select($sql);
   }
 
@@ -23,7 +23,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Título do Progama</title>
+  <title>Dicionário Mudo</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/cover.css">
   <link rel="stylesheet" href="css/album.css">
@@ -36,7 +36,7 @@
   <div class="cover-container p-3 mx-auto" style="width: 100%; max-width:1440px; margin-tom: 5em;">
     <header class="masthead mb-auto">
       <div class="inner">
-        <h3 class="masthead-brand">Título do Progama</h3>
+        <h3 class="masthead-brand">Dicionário Mudo</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="animais.php">Animais</a>
@@ -57,13 +57,19 @@
       <div class="album py-5">
         <div class="container">
           <div class="row">
-            <!-- Este div inteiro -->
             <?php
               if(is_array($resultado)){
+                /*
+                  $exibir = selectExibicao($resultado, $tb_animal);
+                  while($count < count($exibir)){
+                    echo $exibir[$count];
+                  }
+                */
                 while($count < count($resultado)){
                   echo '
                   <div class="col-md-4 flip-container">
-                    <div class="card mb-4 shadow-sm flipper">
+                    <div class="card shadow-sm flipper">
+                      <a href="palavra.php?'.$resultado[$count][1].'&'.$tb_comidas.'">
                         <div class="front">
                           <img class="card-img-top" src="'.$resultado[$count][2].'">
                           <div class="card-img-overlay">
@@ -73,6 +79,7 @@
                         <div class="back">
                           <img class="card-img-top" src="'.$resultado[$count][3].'">
                         </div>
+                      </a>
                     </div>
                   </div>
                   ';
@@ -80,7 +87,6 @@
                 }
               }
             ?>
-            <!-- Será exibido apartir do while em PHP -->
           </div>
         </div>
       </div>

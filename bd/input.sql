@@ -5,7 +5,7 @@ insert into gestos (nome, linkImg, linkVid) values ("boa noite", "img/boa noite.
 insert into gestos (nome, linkImg, linkVid) values ("boa tarde", "img/boa tarde.jpg", "gif/boa tarde.gif");
 insert into gestos (nome, linkImg, linkVid) values ("bom dia", "img/bom dia.png", "gif/bom dia.gif");
 insert into gestos (nome, linkImg, linkVid) values ("caneta", "img/caneta.jpg", "gif/caneta.gif");
--- insert into gestos (nome, linkImg, linkVid) values ("estoubem", "img/estoubem.jfif", "gif/estoubem.gif");
+-- insert into gestos (nome, linkImg, linkVid) values ("estou bem", "img/estou bem.jfif", "gif/estou bem.gif");
 insert into gestos (nome, linkImg, linkVid) values ("idade", "img/idade.jpg", "gif/idade.gif");
 insert into gestos (nome, linkImg, linkVid) values ("oi", "img/oi.jpg", "gif/oi.gif");
 insert into gestos (nome, linkImg, linkVid) values ("onde", "img/onde.jpg", "gif/onde.gif");

@@ -31,3 +31,9 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+/* Precisa do css/flip.css */
+.album .flip-container{
+  margin-top: 30px;
+  margin-bottom: 400px;
+}

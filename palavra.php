@@ -3,25 +3,29 @@
 
 <?php
 
-  require_once "animais/banco.php";
-  require_once "gestos/banco.php";
-  require_once "comidas/banco.php";
+  // Fazer um select genérico
+  require_once "bd/banco.php"; // Usado para SELECT, INSERT, ETC...
+  require_once "bd/tabelas.php";
 
 
   // Pesquisar
   $banco = new banco;
-  $sql = "SELECT * FROM "
-  $row = $banco->select($sql);
-  $cont = 0;
+  // Realiza a pesquisa somente quando receber os dados que deve pesquisar
+  if(isset($_GET["palavra"])){
+    $palavra = $_GET["palavra"];
+    $sql = "SELECT * FROM ".$_GET['tabela']." WHERE nome LIKE '".$palavra."'";
+    $resultado = $banco->select($sql);
+  }
 
 ?>
 
 <head>
   <meta charset="UTF-8">
-  <title>Título do Progama</title>
+  <title>Dicionário Mudo</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/cover.css">
-  <link rel="stylesheet" href="css/starter-template.css">
+  <link rel="stylesheet" href="css/album.css">
+  <link rel="stylesheet" href="css/flip.css">
 </head>
 
 <body>
@@ -29,14 +33,14 @@
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" style="width: 100%; max-width:1080px;">
     <header class="masthead mb-auto">
       <div class="inner">
-        <h3 class="masthead-brand">Título do Progama</h3>
+        <h3 class="masthead-brand">Dicionário Mudo</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="animais.php">Animais</a>
-          <a class="nav-link" href="#">Comidas</a>
-          <a class="nav-link" href="#">Gestos</a>
-          <a class="nav-link active" href="palavra.php">Dicionário</a>
-          <form class="form-inline ml-3">
+          <a class="nav-link" href="comidas.php">Comidas</a>
+          <a class="nav-link" href="gestos.php">Gestos</a>
+          <a class="nav-link" href="dicionario.php">Dicionário</a>
+          <form action="dicionario.php" form="post" class="form-inline ml-3">
               <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
           </form>
@@ -56,11 +60,6 @@
     //  }
 
       ?>
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
 
     </main><!-- /.container -->
 

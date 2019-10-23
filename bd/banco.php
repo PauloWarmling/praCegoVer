@@ -62,6 +62,31 @@ class banco {
         }
     }
 
+    public function selectExibicao($resultado, $tabela){
+      $count = 0;
+        while($count < count($resultado, $tabela)){
+          $retornar[$count] = '
+          <div class="col-md-4 flip-container">
+            <div class="card shadow-sm flipper">
+              <a href="palavra.php?'.$resultado[$count][1].'&'.$tabela.'">
+                <div class="front">
+                  <img class="card-img-top" src="'.$resultado[$count][2].'">
+                  <div class="card-img-overlay">
+                    <h4 class="card-title">'.$resultado[$count][1].'</h4>
+                  </div>
+                </div>
+                <div class="back">
+                  <img class="card-img-top" src="'.$resultado[$count][3].'">
+                </div>
+              </a>
+            </div>
+          </div>
+          ';
+          $count++;
+        }
+        return $retornar;
+    }
+
     function getPdo() {
         return $this->pdo;
     }

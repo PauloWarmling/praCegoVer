@@ -1,7 +1,5 @@
 .flip-container {
-  background-color: transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  width:200px;
 }
 
 /* This container is needed to position the front and back side */
@@ -20,7 +18,7 @@
 }
 
 /* Position the front and back side */
-.front, .back {
+.flip-container .flipper .front, .flip-container .flipper .back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -28,6 +26,10 @@
 }
 
 /* Style the back side */
-.back {
+.flip-container .flipper .back {
   transform: rotateY(180deg);
+}
+
+.flip-container .flipper .front img, .flip-container .flipper .back img{
+  height: 400px;
 }
