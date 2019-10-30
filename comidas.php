@@ -15,7 +15,7 @@
   // Realiza a pesquisa somente quando receber os dados que deve pesquisar
   if(isset($_POST["pesquisa"])){
     $pesquisa = $_POST["pesquisa"];
-    $sql = "SELECT * FROM ".$tb_comidas." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC";
+    $sql = "SELECT * FROM ".$tbs[1]." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC";
     $resultado = $banco->select($sql);
   }
 

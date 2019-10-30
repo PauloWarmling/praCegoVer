@@ -3,7 +3,6 @@
 
 <?php
 
-  // Fazer um select genérico
   require_once "bd/banco.php"; // Usado para SELECT, INSERT, ETC...
   require_once "bd/tabelas.php";
 
@@ -15,8 +14,7 @@
   // Realiza a pesquisa somente quando receber os dados que deve pesquisar
   if(isset($_POST["pesquisa"])){
     $pesquisa = $_POST["pesquisa"];
-    // Arrumar para apresentar todos os resultados em ordem alfabética
-    $sql = "(SELECT * FROM ".$tbs[0]." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM ".$tbs[1]." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM ".$tbs[2]." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)";
+    $sql = "SELECT * FROM ".$tb_animal." WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC";
     $resultado = $banco->select($sql);
   }
 
@@ -40,10 +38,10 @@
         <h3 class="masthead-brand">Dicionário Mudo</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="animais.php">Animais</a>
+          <a class="nav-link active" href="animais.php">Animais</a>
           <a class="nav-link" href="comidas.php">Comidas</a>
           <a class="nav-link" href="gestos.php">Gestos</a>
-          <a class="nav-link active" href="dicionario.php">Dicionário</a>
+          <a class="nav-link" href="dicionario.php">Dicionário</a>
           <a class="nav-link" href="soletrado.php">Soletrado</a>
           <form class="form-inline ml-3" method="post">
               <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="pesquisa" name="pesquisa">
@@ -55,38 +53,7 @@
     </header>
 
     <main role="main" class="container">
-      <div class="album py-5">
-        <div class="container">
-          <div class="row">
-            <!-- Este div inteiro -->
-            <?php
-              if(is_array($resultado)){
-                while($count < count($resultado)){
-                  echo '
-                  <div class="col-md-4 flip-container">
-                    <div class="card shadow-sm flipper">
-                      <a href="palavra.php?'.$resultado[$count][1].'">
-                        <div class="front">
-                          <img class="card-img-top" src="'.$resultado[$count][2].'">
-                          <div class="card-img-overlay">
-                            <h4 class="card-title">'.$resultado[$count][1].'</h4>
-                          </div>
-                        </div>
-                        <div class="back">
-                          <img class="card-img-top" src="'.$resultado[$count][3].'">
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  ';
-                  $count++;
-                }
-              }
-            ?>
-            <!-- Será exibido apartir do while em PHP -->
-          </div>
-        </div>
-      </div>
+      <!-- Fazer um echo em php dentro de um loop que verifica a variável que sofreu explode e caso seja um " " (espaço) é apenas exibido com echo normal e caso seja uma letra exibirá ela dando um echo <image src='img/letra.jpg' -->
 
       <?php // Fazer enviar via POST qual o nome da palavra que será exibida na página palavra.php
 //
