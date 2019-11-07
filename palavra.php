@@ -33,21 +33,34 @@
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">Dicionário Mudo</h3>
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="animais.php">Animais</a>
-          <a class="nav-link" href="comidas.php">Comidas</a>
-          <a class="nav-link" href="gestos.php">Gestos</a>
-          <a class="nav-link" href="dicionario.php">Dicionário</a>
-          <form action="dicionario.php" form="post" class="form-inline ml-3">
-              <select class="form-control mr-sm-2" name="tabela" id="tabela">
-                <option value="animais">Animais</option>
-                <option value="comidas">Comidas</option>
-                <option value="gestos">Gestos</option>
-              </select>
-              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="pesquisa" name="pesquisa>
-              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
-          </form>
+        <nav class="nav nav-masthead justify-content-center navbar-expand-md ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="dicionario.php">Dicionário</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <select class="dropdown-toggle" href="#" id="tabela" name="tabela" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <option class="dropdown-item" href="#">Animais</option>
+                  <option class="dropdown-item" href="#">Comidas</option>
+                  <option class="dropdown-item" href="#">Gestos</option>
+                </select>
+              </li>
+
+            </ul>
+            <input class="form-control ml-2 mr-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="pesquisa" name="pesquisa">
+            <button class="btn btn-outline-light my-2 my-sm-0" onclick="pesquisar()">Pesquisar</button>
+          </div>
         </nav>
 
       </div>
