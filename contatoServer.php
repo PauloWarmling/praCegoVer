@@ -13,8 +13,7 @@ if (isset($_GET["palavra"])) {
     if (empty($palavra)) {
         $sql = "SELECT * FROM * ORDER BY nome ASC";
     } else {
-        $palavra .= "%";
-        $sql = "(SELECT * FROM animais WHERE nome LIKE '".$pesquisa."' ORDER BY nome ASC)union(SELECT * FROM comidas WHERE nome LIKE '".$pesquisa."' ORDER BY nome ASC)union(SELECT * FROM gestos WHERE nome LIKE '".$pesquisa."' ORDER BY nome ASC)";
+        $sql = "(SELECT * FROM animais WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM comidas WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM gestos WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)";
     }
     sleep(1);
     $result = mysql_query($sql);

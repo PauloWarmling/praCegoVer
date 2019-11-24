@@ -31,8 +31,8 @@
 
      // Declaração de Variáveis
      var pesquisa   = document.getElementById("pesquisa").value;
-     var resultado = document.getElementById("resultado");
-     var xmlreq = CriaRequest();
+     var resultado  = document.getElementById("resultado");
+     var xmlreq     = CriaRequest();
 
      // Exibi a imagem de progresso
      resultado.innerHTML = '<p>teste</p>';
