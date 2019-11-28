@@ -2,46 +2,51 @@
 // Verifica se existe a variável palavra
 
 if (isset($_GET["palavra"])) {
-    $palavra = $_GET["palavra"];
+    $pesquisa = $_GET["palavra"];
+
+    require_once "bd/banco.php";
 
     // Conexao com o banco de dados
-    $server = "200.135.58.18";
-    $user = "dicionariomudo";
-    $senha = "Dicionariomudo%123";
-    $base = "dicionariomudo";
-    $conexao = new mysqli($server, $user, $senha,$base);
+    //$server = "200.135.58.18";
+    //$user = "dicionariomudo";
+    //$senha = "Dicionariomudo%123";
+    //$base = "dicionariomudo";
+    //$conexao = new mysqli($server, $user, $senha,$base);
+
+    $banco = new banco;
 
     // Verifica se a variável está vazia
-    if (empty($palavra)) {
-        $sql = "SELECT * FROM * ORDER BY nome ASC";
+    if (empty($pesquisa)) {
+        $sql = "(SELECT * FROM animais ORDER BY nome ASC)union(SELECT * FROM comidas ORDER BY nome ASC)union(SELECT * FROM gestos ORDER BY nome ASC)";
     } else {
-        $sql = "(SELECT * FROM animais WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM comidas WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM gestos WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)";
+      $sql = "(SELECT * FROM animais WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM comidas WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)union(SELECT * FROM gestos WHERE nome LIKE '%".$pesquisa."%' ORDER BY nome ASC)";
     }
+    $resultado = $banco->select($sql);
     //sleep(1);
-    $result = $conexao->query($sql);
-    $cont = $conexao->affected_rows;
     // Verifica se a consulta retornou linhas
-    if ($cont > 0) {
+    if (count($resultado) > 0) {
       $row = '<div class="row">';
       $return = "$row";
-      while ($linha = $result->fetch_array(MYSQLI_ASSOC)){
+      $x = 0;
+      while ($x < count($resultado)){
         $return.= '
-          <div class="col-md-4 flip-container">
-            <div class="card shadow-sm flipper">
-              <a href="palavra.php?' . utf8_encode($linha["nome"]) . '">
-                <div class="front">
-                  <img class="card-img-top" src="' . utf8_encode($linha["linkImg"]) . '">
-                  <div class="card-img-overlay">
-                    <h4 class="card-title">' . utf8_encode($linha["nome"]) . '</h4>
-                  </div>
+        <div class="col-md-4 flip-container">
+          <div class="card shadow-sm flipper">
+            <a href="palavra.php?'.$resultado[$x][1].'">
+              <div class="front">
+                <img class="card-img-top" src="'.$resultado[$x][2].'">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">'.$resultado[$x][1].'</h4>
                 </div>
-                <div class="back">
-                  <img class="card-img-top" src="' . utf8_encode($linha["linkVid"]) . '">
-                </div>
-              </a>
-            </div>
+              </div>
+              <div class="back">
+                <img class="card-img-top" src="'.$resultado[$x][3].'">
+              </div>
+            </a>
           </div>
+        </div>
           ';
+          $x++;
         }
         echo $return.= '<div>';
     } else {

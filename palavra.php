@@ -23,13 +23,11 @@
   <title>Dicionário Mudo</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/cover.css">
-  <link rel="stylesheet" href="css/album.css">
-  <link rel="stylesheet" href="css/flip.css">
 </head>
 
 <body>
 
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" style="width: 100%; max-width:1080px;">
+  <div class="cover-container d-flex p-3 mx-auto flex-column" style="width: 100%; max-width:1080px;">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">Dicionário Mudo</h3>
@@ -46,14 +44,14 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="dicionario.php">Dicionário</a>
+                <a class="nav-link" href="dicionario.html">Dicionário</a>
               </li>
 
-              <li class="nav-item dropdown">
-                <select class="dropdown-toggle" href="#" id="tabela" name="tabela" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <option class="dropdown-item" href="#">Animais</option>
-                  <option class="dropdown-item" href="#">Comidas</option>
-                  <option class="dropdown-item" href="#">Gestos</option>
+              <li class="nav-item">
+                <select class="" href="#" id="tabela" name="tabela" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <option href="#">Animais</option>
+                  <option href="#">Comidas</option>
+                  <option href="#">Gestos</option>
                 </select>
               </li>
 
@@ -68,14 +66,25 @@
 
     <main role="main" class="container">
 
-      <?php
+      <div class="jumbotron mt-4">
+        <div class="container">
+          <h1 id="palavra"><?php echo $resultado[0][1]; ?></h1>
+        </div>
+      </div>
 
-        echo '<h4 class="card-title">'.$resultado[0][1].'</h4>';
-        echo '<img class="card-img-top" src="'.$resultado[0][2].'">';
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h2>GIF</h2>
+            <img style="width:400px" id="gif" src="<?php echo $resultado[0][3]; ?>">
+          </div>
+          <div class="col text-center">
+            <h2>Imagem</h2>
+            <img style="width:400px" id="imagem" src="<?php echo $resultado[0][2]; ?>">
+          </div>
+        </div>
 
-      ?>
-
-    </main><!-- /.container -->
+    </main>
   </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

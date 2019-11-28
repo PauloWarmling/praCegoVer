@@ -35,7 +35,7 @@
      var xmlreq     = CriaRequest();
 
      // Exibi a imagem de progresso
-     resultado.innerHTML = '<p>teste</p>';
+     resultado.innerHTML = '<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>';
 
      // Iniciar uma requisição
      xmlreq.open("GET", "contatoServer.php?palavra=" + pesquisa, true);

@@ -1,8 +1,8 @@
 <?php
 
-  $host = "marcelaleite.com";
-  $database = "u330641331_geek";
-  $usuario = "u330641331_geek";
-  $senha = "juan.123";
+  $host = "200.135.58.18";
+  $database = "dicionariomudo";
+  $usuario = "dicionariomudo";
+  $senha = "DicionarioMudo%123";
 
 ?>
