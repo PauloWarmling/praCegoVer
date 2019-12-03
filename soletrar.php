@@ -38,9 +38,9 @@
         <h3 class="masthead-brand">Dicionário Mudo</h3>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="dicionario-ajax.html">Dicionário</a> <!-- Depois renomear dicionario-ajax.html para dicionario.html -->
+          <a class="nav-link" href="dicionario.html">Dicionário</a> <!-- Depois renomear dicionario-ajax.html para dicionario.html -->
           <a class="nav-link active" href="#">Soletrado</a>
-          <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="pesquisa" name="pesquisa">
+          <input style="width:220px" class="form-control ml-3 mr-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="pesquisa" name="pesquisa">
           <button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="getDados();">Pesquisar</button>
         </nav>
 
